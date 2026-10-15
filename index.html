@@ -1,1 +1,85 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Happy Birthday Tyra 💗</title><style>*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;background:linear-gradient(135deg,#ffe5f1,#ffb8d9);font-family:system-ui,sans-serif;color:#a52c6b;text-align:center;overflow:hidden}main{width:min(92vw,600px);padding:35px 22px;border-radius:28px;background:#ffffffa8;box-shadow:0 12px 40px #d4508533}h1{font-size:clamp(2rem,8vw,4rem);margin:12px 0;color:#e63f8c}p{font-size:1.3rem}button{border:0;border-radius:40px;padding:16px 27px;font-size:1.1rem;font-weight:800;cursor:pointer;touch-action:manipulation}#start,#yes{background:#ed4d98;color:white}#no{background:white;color:#c34680;border:2px solid #f5a3c9}#buttons{display:flex;align-items:center;justify-content:center;gap:20px;min-height:120px}#yes{transform:scale(var(--grow,1));position:relative;z-index:2}#no{position:relative;z-index:3}#no.run{position:fixed;left:var(--x);top:var(--y)}.hidden{display:none}#tease{min-height:2em;font-size:1rem} .heart{position:fixed;pointer-events:none;animation:float 5s linear forwards}@keyframes float{from{transform:translateY(0);opacity:1}to{transform:translateY(-110vh);opacity:0}}</style></head><body><main><section id="intro"><div style="font-size:4rem">🎂💗</div><h1>HAPPY BIRTHDAYYY TYRA!!</h1><p>Hope your day is as amazing as you are! 🎀</p><button id="start">One little question 💌</button></section><section id="question" class="hidden"><h1>TYRAAAA 🥺💗</h1><p>Will you invite me to your birthday?</p><div id="buttons"><button id="yes">YESSS 💕</button><button id="no">no 🙄</button></div><p id="tease">Choose wisely ✨</p></section><section id="finish" class="hidden"><div style="font-size:4rem">🎉💗🎂</div><h1>THANKYOUUU!!</h1><p>KNEW YOU'D SAY YESSS 😭💕</p><p>See you thereee!! 🎀</p></section></main><script>const $=id=>document.getElementById(id);let tries=0;const messages=['wrong answer 😭','are you sureeee? 🥺','that button is shy 💅','YES looks so much better 💗','Tyra pleaseeee 😭','nope, try again 🎀'];$('start').onclick=()=>{$('intro').classList.add('hidden');$('question').classList.remove('hidden')};function dodge(){tries++;$('tease').textContent=messages[(tries-1)%messages.length];$('yes').style.setProperty('--grow',Math.min(1+tries*.13,1.85));const n=$('no'),w=n.offsetWidth,h=n.offsetHeight,p=12;let x=p+Math.random()*Math.max(1,innerWidth-w-2*p),y=p+Math.random()*Math.max(1,innerHeight-h-2*p);const a=$('yes').getBoundingClientRect();if(x<a.right+10&&x+w>a.left-10&&y<a.bottom+10&&y+h>a.top-10)y=a.top>h+25?p:innerHeight-h-p;n.style.setProperty('--x',x+'px');n.style.setProperty('--y',y+'px');n.classList.add('run')}$('no').addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')dodge()});$('no').addEventListener('click',e=>{e.preventDefault();dodge()});$('no').addEventListener('touchstart',e=>{e.preventDefault();dodge()},{passive:false});$('yes').onclick=()=>{$('question').classList.add('hidden');$('no').classList.remove('run');$('finish').classList.remove('hidden');for(let i=0;i<60;i++){let s=document.createElement('span');s.className='heart';s.textContent=['💗','💕','🎉','✨'][i%4];s.style.left=Math.random()*100+'vw';s.style.top=(40+Math.random()*60)+'vh';s.style.fontSize=(18+Math.random()*25)+'px';s.style.animationDelay=Math.random()*2+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),7000)}};</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#fbd7e5">
+<title>For Tyra — Happy Birthday</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+:root{--rose:#df4381;--dark:#7d2b4b;--cream:#fff8f9}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;min-height:100%;overflow:hidden}
+body{min-height:100svh;font-family:'DM Sans',sans-serif;color:var(--dark);background:radial-gradient(circle at 16% 12%,#fff5f8 0%,transparent 40%),radial-gradient(circle at 88% 78%,#f8a5c7 0%,transparent 38%),linear-gradient(145deg,#fce5ed,#f9c6d9 70%,#f6b6d0);display:grid;place-items:center}
+.grain{position:fixed;inset:0;pointer-events:none;opacity:.19;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.19'/%3E%3C/svg%3E")}
+.orb{position:fixed;border-radius:50%;pointer-events:none;filter:blur(2px);animation:drift 9s ease-in-out infinite alternate}.orb.a{width:180px;height:180px;top:-70px;right:-55px;background:#fff7f9aa}.orb.b{width:115px;height:115px;bottom:8%;left:-55px;background:#f29abf88;animation-delay:-4s}.orb.c{width:55px;height:55px;top:22%;left:13%;background:#ffffff70;animation-delay:-2s}
+@keyframes drift{to{transform:translate(20px,-35px) scale(1.12)}}
+main{position:relative;z-index:2;width:min(91vw,560px);text-align:center}
+.card{padding:clamp(32px,7vw,60px) clamp(22px,6vw,50px);border-radius:30px;background:#fff9f9c9;border:1px solid #fff;box-shadow:0 20px 70px #b8467140, inset 0 1px #fff;backdrop-filter:blur(14px);animation:appear .65s cubic-bezier(.2,.8,.2,1) both}
+@keyframes appear{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
+.eyebrow{letter-spacing:.24em;font-size:.72rem;text-transform:uppercase;font-weight:800;color:#c26a8b;margin:0 0 18px}
+h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2.6rem,10vw,4.5rem);line-height:1.12;margin:0 0 22px;color:#ba386d}
+h1 em{font-style:italic;color:#ee6e9d}
+p{font-size:clamp(1rem,4vw,1.2rem);line-height:1.6;margin:12px 0 22px}
+.line{height:2px;width:60px;margin:20px auto;background:linear-gradient(90deg,transparent,#e879a7,transparent)}
+button{font-family:inherit;font-size:1rem;font-weight:800;letter-spacing:.03em;cursor:pointer;touch-action:manipulation;border:0;user-select:none;-webkit-tap-highlight-color:transparent}
+.pink{color:#fff;background:linear-gradient(140deg,#f06a9f,#d73e7b);border-radius:999px;padding:17px 32px;box-shadow:0 9px 24px #d34c824d;transition:filter .2s,transform .2s}.pink:active{filter:brightness(1.08)}
+.choices{display:flex;align-items:center;justify-content:center;gap:18px;min-height:115px;margin-top:8px}
+#yes{position:relative;z-index:5;transform:scale(var(--scale,1));transform-origin:center;transition:transform .35s cubic-bezier(.2,.85,.25,1),border-radius .45s,background .45s}
+#yes.takeover{position:fixed;inset:0;width:100vw;height:100dvh;border-radius:0;transform:none!important;z-index:30;font-size:clamp(2rem,9vw,5rem);box-shadow:none;background:linear-gradient(145deg,#ef6199,#c92e73);animation:takeover .55s ease-out both}
+@keyframes takeover{from{clip-path:circle(15% at 50% 50%)}to{clip-path:circle(100% at 50% 50%)}}
+#no{color:#b84b76;background:#fff;border:1px solid #edb5cb;border-radius:999px;padding:16px 26px;box-shadow:0 7px 18px #ba547e1c;position:relative;z-index:6;transition:opacity .25s}
+#no.run{position:fixed;left:var(--x);top:var(--y);z-index:12}
+#tease{min-height:2.5em;color:#ba4e79;font-weight:700;font-size:.93rem;margin:14px 0 0}
+.hidden{display:none!important}
+#finish h1{font-size:clamp(3rem,13vw,5.5rem);animation:popIn .7s cubic-bezier(.2,1.6,.3,1) both}
+@keyframes popIn{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+#finish .seal{display:inline-grid;place-items:center;width:84px;height:84px;border-radius:50%;background:#ffe2ed;color:#c93d76;font-size:2.5rem;margin-bottom:22px;box-shadow:0 0 0 10px #fff1f5}
+.confetti{position:fixed;top:-20px;z-index:40;pointer-events:none;width:9px;height:17px;background:var(--color);left:var(--left);animation:fall var(--duration) linear forwards;animation-delay:var(--delay);transform:rotate(var(--rotation))}
+@keyframes fall{to{transform:translate(var(--sway),110vh) rotate(850deg);opacity:0}}
+.stars{position:fixed;inset:0;pointer-events:none;z-index:1}.star{position:absolute;width:5px;height:5px;background:#fff;border-radius:50%;box-shadow:0 0 12px #fff;animation:twinkle 3s ease-in-out infinite alternate}
+@keyframes twinkle{to{opacity:.15;transform:scale(.4)}}
+@media(max-width:380px){.choices{gap:10px}#no{padding:14px 18px}.pink{padding:15px 23px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="grain"></div><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div><div class="stars" id="stars"></div>
+<main>
+<section class="card" id="intro">
+<p class="eyebrow">A little something for you</p>
+<h1>Happy Birthday,<br><em>Tyra.</em></h1>
+<div class="line"></div>
+<p>Hope your day is full of good surprises, great memories, and all your favorite things.</p>
+<button class="pink" id="start">One little question →</button>
+</section>
+<section class="card hidden" id="question">
+<p class="eyebrow">An extremely important question</p>
+<h1>So, <em>Tyra...</em></h1>
+<p>Will you invite me to your birthday?</p>
+<div class="choices"><button class="pink" id="yes">YES, obviously</button><button id="no">No</button></div>
+<p id="tease" aria-live="polite">Think carefully.</p>
+</section>
+<section class="card hidden" id="finish">
+<div class="seal">♥</div>
+<p class="eyebrow">The correct answer</p>
+<h1>THANKYOUUU!</h1>
+<div class="line"></div>
+<p>I knew you wouldn't let me down.<br>See you there!</p>
+</section>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+let tries=0,done=false;
+const messages=["Hmm. Try that again.","Are you absolutely sure?","Interesting choice. Incorrect, though.","The YES button is right there.","Okay, now you're just being difficult.","It's getting a little hard to say no, isn't it?","There is only one answer now."];
+for(let i=0;i<24;i++){const s=document.createElement('span');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDelay=-Math.random()*4+'s';$('stars').appendChild(s)}
+$('start').onclick=()=>{$('intro').classList.add('hidden');$('question').classList.remove('hidden')};
+function dodge(){if(done)return;tries++;$('tease').textContent=messages[Math.min(tries-1,messages.length-1)];const yes=$('yes'),no=$('no');if(tries>=7){no.classList.add('hidden');yes.classList.add('takeover');yes.textContent='YES, OBVIOUSLY';return}yes.style.setProperty('--scale',Math.min(1+tries*.19,2.1));const w=no.offsetWidth,h=no.offsetHeight,pad=14;let x=pad+Math.random()*Math.max(1,innerWidth-w-2*pad),y=pad+Math.random()*Math.max(1,innerHeight-h-2*pad);const yr=yes.getBoundingClientRect();if(x<yr.right+15&&x+w>yr.left-15&&y<yr.bottom+15&&y+h>yr.top-15){y=yr.top>h+35?pad:innerHeight-h-pad}no.style.setProperty('--x',x+'px');no.style.setProperty('--y',y+'px');no.classList.add('run')}
+$('no').addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')dodge()});
+$('no').addEventListener('click',e=>{e.preventDefault();dodge()});
+$('no').addEventListener('touchstart',e=>{e.preventDefault();dodge()},{passive:false});
+function celebrate(){const colors=['#e83f84','#f6a4c4','#fff','#b52c68','#f6d38a'];for(let i=0;i<110;i++){const c=document.createElement('i');c.className='confetti';c.style.setProperty('--color',colors[i%colors.length]);c.style.setProperty('--left',Math.random()*100+'vw');c.style.setProperty('--delay',Math.random()*.9+'s');c.style.setProperty('--duration',(2.3+Math.random()*2.2)+'s');c.style.setProperty('--rotation',Math.random()*360+'deg');c.style.setProperty('--sway',(Math.random()-.5)*230+'px');document.body.appendChild(c);setTimeout(()=>c.remove(),6000)}}
+$('yes').onclick=()=>{if(done)return;done=true;$('question').classList.add('hidden');$('yes').classList.remove('takeover');$('finish').classList.remove('hidden');celebrate()};
+</script>
+</body>
+</html>
