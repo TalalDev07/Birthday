@@ -26,7 +26,7 @@ button{font-family:inherit;font-size:1rem;font-weight:800;letter-spacing:.03em;c
 .pink{color:#fff;background:linear-gradient(140deg,#f06a9f,#d73e7b);border-radius:999px;padding:17px 32px;box-shadow:0 9px 24px #d34c824d;transition:filter .2s,transform .2s}.pink:active{filter:brightness(1.08)}
 .choices{display:flex;align-items:center;justify-content:center;gap:18px;min-height:115px;margin-top:8px}
 #yes{position:relative;z-index:5;transform:scale(var(--scale,1));transform-origin:center;transition:transform .35s cubic-bezier(.2,.85,.25,1),border-radius .45s,background .45s}
-#yes.takeover{position:fixed;inset:0;width:100vw;height:100dvh;border-radius:0;transform:none!important;z-index:30;font-size:clamp(2rem,9vw,5rem);box-shadow:none;background:linear-gradient(145deg,#ef6199,#c92e73);animation:takeover .55s ease-out both}
+#yes.takeover{position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;min-width:100vw!important;min-height:100dvh!important;max-width:none!important;margin:0!important;padding:0!important;border-radius:0!important;transform:none!important;z-index:9999!important;font-size:clamp(2.3rem,12vw,6rem)!important;box-shadow:none!important;background:linear-gradient(145deg,#f36b9f,#c92e73)!important;animation:takeover .5s ease-out both;display:grid;place-items:center}
 @keyframes takeover{from{clip-path:circle(15% at 50% 50%)}to{clip-path:circle(100% at 50% 50%)}}
 #no{color:#b84b76;background:#fff;border:1px solid #edb5cb;border-radius:999px;padding:16px 26px;box-shadow:0 7px 18px #ba547e1c;position:relative;z-index:6;transition:opacity .25s}
 #no.run{position:fixed;left:var(--x);top:var(--y);z-index:12}
@@ -41,7 +41,7 @@ button{font-family:inherit;font-size:1rem;font-weight:800;letter-spacing:.03em;c
 @keyframes twinkle{to{opacity:.15;transform:scale(.4)}}
 @media(max-width:380px){.choices{gap:10px}#no{padding:14px 18px}.pink{padding:15px 23px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
-</style>
+.characters{display:flex;align-items:end;justify-content:center;gap:10px;margin-top:26px}.character{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:.76rem;font-weight:800;color:#b34a76}.character img{width:100%;height:clamp(100px,27vw,170px);object-fit:contain;filter:drop-shadow(0 8px 8px #b8477650);animation:popIn .8s ease both}.character.missing img{display:none}.character.missing:before{content:'✦';font-size:4rem;color:#ec9cbf;display:grid;place-items:center;height:clamp(100px,27vw,170px)}@media(max-height:650px){#finish .seal{display:none}.characters{margin-top:8px}.character img{height:90px}}</style>
 </head>
 <body>
 <div class="grain"></div><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div><div class="stars" id="stars"></div>
@@ -65,16 +65,16 @@ button{font-family:inherit;font-size:1rem;font-weight:800;letter-spacing:.03em;c
 <p class="eyebrow">The correct answer</p>
 <h1>THANKYOUUU!</h1>
 <div class="line"></div>
-<p>I knew you wouldn't let me down.<br>See you there!</p>
+<p>I knew you'd say yes. See you there!</p><div class="characters"><div class="character"><img src="leon.png" alt="Leon Kennedy" onerror="this.parentElement.classList.add('missing')"><span>Leon</span></div><div class="character"><img src="nikki.png" alt="Nikki from Obsession" onerror="this.parentElement.classList.add('missing')"><span>Nikki</span></div><div class="character"><img src="mabel.png" alt="Mabel Pines" onerror="this.parentElement.classList.add('missing')"><span>Mabel</span></div></div>
 </section>
 </main>
 <script>
 const $=id=>document.getElementById(id);
 let tries=0,done=false;
-const messages=["Hmm. Try that again.","Are you absolutely sure?","Interesting choice. Incorrect, though.","The YES button is right there.","Okay, now you're just being difficult.","It's getting a little hard to say no, isn't it?","There is only one answer now."];
+const messages=["Try again.","You sure?","Wrong button.","Nice try.","Only one choice left."];
 for(let i=0;i<24;i++){const s=document.createElement('span');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.animationDelay=-Math.random()*4+'s';$('stars').appendChild(s)}
 $('start').onclick=()=>{$('intro').classList.add('hidden');$('question').classList.remove('hidden')};
-function dodge(){if(done)return;tries++;$('tease').textContent=messages[Math.min(tries-1,messages.length-1)];const yes=$('yes'),no=$('no');if(tries>=7){no.classList.add('hidden');yes.classList.add('takeover');yes.textContent='YES, OBVIOUSLY';return}yes.style.setProperty('--scale',Math.min(1+tries*.19,2.1));const w=no.offsetWidth,h=no.offsetHeight,pad=14;let x=pad+Math.random()*Math.max(1,innerWidth-w-2*pad),y=pad+Math.random()*Math.max(1,innerHeight-h-2*pad);const yr=yes.getBoundingClientRect();if(x<yr.right+15&&x+w>yr.left-15&&y<yr.bottom+15&&y+h>yr.top-15){y=yr.top>h+35?pad:innerHeight-h-pad}no.style.setProperty('--x',x+'px');no.style.setProperty('--y',y+'px');no.classList.add('run')}
+function dodge(){if(done)return;tries++;$('tease').textContent=messages[Math.min(tries-1,messages.length-1)];const yes=$('yes'),no=$('no');if(tries>=5){no.classList.add('hidden');yes.classList.add('takeover');yes.textContent='YES, OBVIOUSLY';return}yes.style.setProperty('--scale',Math.min(1+tries*.19,2.1));const w=no.offsetWidth,h=no.offsetHeight,pad=14;let x=pad+Math.random()*Math.max(1,innerWidth-w-2*pad),y=pad+Math.random()*Math.max(1,innerHeight-h-2*pad);const yr=yes.getBoundingClientRect();if(x<yr.right+15&&x+w>yr.left-15&&y<yr.bottom+15&&y+h>yr.top-15){y=yr.top>h+35?pad:innerHeight-h-pad}no.style.setProperty('--x',x+'px');no.style.setProperty('--y',y+'px');no.classList.add('run')}
 $('no').addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')dodge()});
 $('no').addEventListener('click',e=>{e.preventDefault();dodge()});
 $('no').addEventListener('touchstart',e=>{e.preventDefault();dodge()},{passive:false});
